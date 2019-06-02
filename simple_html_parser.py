@@ -32,7 +32,13 @@ def print_lst(lst):
     lst1 = [i.string for i in lst]
     return lst1
 
+# find the paragraph which doesn't have a class
 
+def find_para_not_haveclass():
+    paragraphs = simple_soup.find_all('p')
+    other_para  =  [p.string for p in paragraphs if 'subtitle' not in p.attrs.get('class',[])]   # by default .get(' ') return None unless specified
+                                          # so if subtitle in empty list
+    return other_para
 simple_soup = BeautifulSoup(SIMPLE_HTML,'html.parser')  # Beautifulsoup is a class , simple_soup is object
 print(simple_scrap())
 
@@ -42,6 +48,6 @@ lst = find_list_items()
 print_lst_items(lst)
 
 print('list of list item:',print_lst(lst))
-
+print('para not containing class',find_para_not_haveclass())
 
 
