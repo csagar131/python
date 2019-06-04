@@ -53,9 +53,9 @@ class ParsedItem:
         locator = 'article.product_pod p.price_color'
         value = self.soup.select_one(locator).string   # this gives us pound sign and price
         # but we want the price or only the float value not any currency sign
-        #pattern = '£([0-9]+/.[0-9]+)'
-        #matcher = re.search(pattern, value)
-        #return float(matcher.group(1))     #group 0 will give the £ sign and group 1 give the actual value from pattern
+        pattern = '£([0-9]+\.[0-9]+)'
+        matcher = re.search(pattern, value)
+        return float(matcher.group(1))     #group 0 will give the £ sign and group 1 give the actual value from pattern
 
     def find_item_rating(self):
         locator = 'article.product_pod p.star-rating.Three'
@@ -68,3 +68,4 @@ item = ParsedItem(ITEM_HTML)
 
 print(item.find_item_rating())
 print(item.find_href_h3())
+print("price of the item is--->",item.find_price())
