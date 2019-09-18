@@ -4,6 +4,9 @@ class Garage:
 
     def __len__(self):
         return len(self.cars)
+    
+    def __getitem__(self,i):
+        return self.cars[i]
 
 
 ford = Garage()
@@ -11,3 +14,4 @@ ford = Garage()
 ford.cars.append("fiesta")
 ford.cars.append("focus")
 print(len(ford))
+print(ford[0])
