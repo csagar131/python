@@ -10,4 +10,4 @@ value = input("ENter data--->> ")
 data1 = my_file1.write(value)
 my_file1.close()
 
-print(data1)
+print(data1)  # will print the length of character entered in the input statement above
